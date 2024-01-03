@@ -193,8 +193,12 @@ function convertNumberToString(numberStr) {
  *  '0123210'   => true
  *  'qweqwe'    => false
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  let s = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    s += str[i];
+  }
+  return s === str;
 }
 
 /**
@@ -211,8 +215,13 @@ function isPalindrome(/* str */) {
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
-function getIndexOf(/* str, letter */) {
-  throw new Error('Not implemented');
+function getIndexOf(str, letter) {
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === letter) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 /**
@@ -230,8 +239,8 @@ function getIndexOf(/* str, letter */) {
  *  12345, 0    => false
  *  12345, 6    => false
  */
-function isContainNumber(/* num, digit */) {
-  throw new Error('Not implemented');
+function isContainNumber(num, digit) {
+  return getIndexOf(JSON.stringify(num), JSON.stringify(digit)) >= 0;
 }
 
 /**
@@ -247,8 +256,20 @@ function isContainNumber(/* num, digit */) {
  *  [2, 3, 9, 5] => 2       => 2 + 3 === 5 then balance element is 9 and its index = 2
  *  [1, 2, 3, 4, 5] => -1   => no balance element
  */
-function getBalanceIndex(/* arr */) {
-  throw new Error('Not implemented');
+function getBalanceIndex(arr) {
+  function sum(array, a, b) {
+    let res = 0;
+    for (let i = a; i < b; i += 1) {
+      res += array[i];
+    }
+    return res;
+  }
+  for (let i = 1; i < arr.length - 1; i += 1) {
+    if (sum(arr, 0, i) === sum(arr, i + 1, arr.length)) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 /**
@@ -274,8 +295,27 @@ function getBalanceIndex(/* arr */) {
  */
 function getSpiralMatrix(/* size */) {
   throw new Error('Not implemented');
+
+  // const res = [];
+  // for (let i = 0; i < size; i += 1) {
+  //   res.push([]);
+  // }
+
+  // for (let i = 0; i < size ** 2; i += 1){
+
+  // }
+
+  // // for (let i = 0; i < size; i += 1) {
+  // //   res[0].push(i + 1);
+  // // }
+  // // for (let i = size + 1; i < size * 2 - 1; i += 1) {
+  // //   res[i - size][size].push(i);
+  // // }
+
+  // return res;
 }
 
+// console.log(getSpiralMatrix(3));
 /**
  * Rotates a matrix by 90 degrees clockwise in place.
  * Take into account that the matrix size can be very large. Consider how you can optimize your solution.
@@ -291,10 +331,30 @@ function getSpiralMatrix(/* size */) {
  *    [7, 8, 9]         [9, 6, 3]
  *  ]                 ]
  */
-function rotateMatrix(/* matrix */) {
+
+function rotateMatrix(matrix) {
   throw new Error('Not implemented');
 }
 
+// function rotateMatrix(matrix) {
+//   const res = [];
+//   for (let i = 0; i < matrix.length; i += 1) {
+//     res.push([]);
+//   }
+//   for (let a = 0; a < matrix.length; a += 1) {
+//     for (let i = 0; i < matrix[a].length; i += 1)
+//       res[i][matrix[a].length - 1 - a] = matrix[a][i];
+//   }
+//   return res;
+// }
+
+// console.log(
+//   rotateMatrix([
+//     [1, 2, 3],
+//     [4, 5, 6],
+//     [7, 8, 9],
+//   ])
+// );
 /**
  * Sorts an array of numbers in ascending order in place.
  * Employ any sorting algorithm of your choice.
