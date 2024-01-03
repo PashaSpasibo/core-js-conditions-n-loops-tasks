@@ -333,20 +333,16 @@ function getSpiralMatrix(/* size */) {
  */
 
 function rotateMatrix(matrix) {
-  throw new Error('Not implemented');
+  const res = [];
+  for (let i = 0; i < matrix.length; i += 1) {
+    res.push([]);
+  }
+  for (let a = 0; a < matrix.length; a += 1) {
+    for (let i = 0; i < matrix[a].length; i += 1)
+      res[i][matrix[a].length - 1 - a] = matrix[a][i];
+  }
+  return res;
 }
-
-// function rotateMatrix(matrix) {
-//   const res = [];
-//   for (let i = 0; i < matrix.length; i += 1) {
-//     res.push([]);
-//   }
-//   for (let a = 0; a < matrix.length; a += 1) {
-//     for (let i = 0; i < matrix[a].length; i += 1)
-//       res[i][matrix[a].length - 1 - a] = matrix[a][i];
-//   }
-//   return res;
-// }
 
 // console.log(
 //   rotateMatrix([
